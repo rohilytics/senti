@@ -16,7 +16,7 @@ cursor.execute("SELECT news_id, headline, text FROM news WHERE news_id >= 601 OR
 news_articles = cursor.fetchall()
 
 # Create or connect to the new database where the sentiment will be stored
-conn_sentiment = sqlite3.connect('/root/senti-main/databases/news_sentiment.db')
+conn_sentiment = sqlite3.connect('/root/senti-main/news_sentiment.db')
 cursor_sentiment = conn_sentiment.cursor()
 
 # Create a table to store the news and its sentiment score (if not already exists)
