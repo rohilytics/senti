@@ -5,18 +5,18 @@ import csv
 import os
 
 # CSV file to store the scores
-csv_file_path = '/workspace/databases/news_sentiment_scores.csv'
+csv_file_path = '/root/senti-main/databases/news_sentiment_scores.csv'
 
 # Connect to the existing SQLite database
-conn = sqlite3.connect('/workspace/databases/reuters.db')
+conn = sqlite3.connect('/root/senti-main/reuters.db')
 cursor = conn.cursor()
 
 # Fetch all news articles starting from news_id 6000
-cursor.execute("SELECT news_id, headline, text FROM news WHERE news_id >= 6000 ORDER BY news_id")
+cursor.execute("SELECT news_id, headline, text FROM news WHERE news_id >= 601 ORDER BY news_id")
 news_articles = cursor.fetchall()
 
 # Create or connect to the new database where the sentiment will be stored
-conn_sentiment = sqlite3.connect('/workspace/databases/news_sentiment.db')
+conn_sentiment = sqlite3.connect('/root/senti-main/databases/news_sentiment.db')
 cursor_sentiment = conn_sentiment.cursor()
 
 # Create a table to store the news and its sentiment score (if not already exists)
@@ -73,7 +73,7 @@ with open(csv_file_path, mode='a', newline='') as csv_file:
 
     # Load the Llama model
     llm = Llama(
-        model_path = r"/workspace/models/Llama-3-Instruct-8B-SPPO-Iter3-Q5_K_M.gguf",
+        model_path = r"/root/senti-main/Llama-3-Instruct-8B-SPPO-Iter3-Q5_K_M.gguf",
         n_gpu_layers = -1,
         seed = 123,
         n_ctx = 8192,
