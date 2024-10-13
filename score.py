@@ -5,7 +5,7 @@ import csv
 import os
 
 # CSV file to store the scores
-csv_file_path = '/root/senti-main/databases/news_sentiment_scores.csv'
+csv_file_path = '/root/senti-main/news_sentiment_scores.csv'
 
 # Connect to the existing SQLite database
 conn = sqlite3.connect('/root/senti-main/reuters.db')
